@@ -13,7 +13,7 @@ class CreateEstabelecimentoTable extends Migration
      */
     public function up()
     {
-        Schema::create('estabelecimento', function (Blueprint $table) {
+        Schema::create('estabelecimentos', function (Blueprint $table) {
             $table->bigIncrements('id_estabelecimento');
             $table->string('razao_social');
             $table->string('nome_fantasia')->nullable();
@@ -24,12 +24,12 @@ class CreateEstabelecimentoTable extends Migration
             $table->string('estado')->nullable();
             $table->string('telefone')->nullable();
             $table->date('data_cadastro')->nullable();
-            $table->date('status')->nullable();
-            $table->date('agencia')->nullable();
-            $table->date('conta')->nullable();
-            $table->bigInteger('categoria_id')->unsigned();
+            $table->integer('status')->nullable();
+            $table->string('agencia')->nullable();
+            $table->string('conta')->nullable();
+            $table->bigInteger('categoria_id')->unsigned()->nullable();
 
-            $table->foreign('categoria_id')->references('id')->on('categoria');
+            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('set null');
         });
     }
 
@@ -40,6 +40,6 @@ class CreateEstabelecimentoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('estabelecimento');
+        Schema::dropIfExists('estabelecimentos');
     }
 }

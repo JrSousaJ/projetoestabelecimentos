@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Estabelecimento;
+use App\Models\Categorias;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class EstabelecimentoFactory extends Factory
+class CategoriasFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Estabelecimento::class;
+    protected $model = Categorias::class;
 
     /**
      * Define the model's default state.
@@ -22,8 +22,7 @@ class EstabelecimentoFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->jobTitle,
-
+                'nome' => $this->faker->jobTitle
         ];
     }
 }
