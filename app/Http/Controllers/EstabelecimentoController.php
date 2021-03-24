@@ -2,25 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CategoriaIdRequest;
-use App\Http\Requests\CategoriaRequest;
-use App\Http\Requests\CategoriaUpdateRequest;
-use App\Service\CategoriaService;
+use App\Http\Requests\EstabelecimentoIdRequest;
+use App\Http\Requests\EstabelecimentoRequest;
+use App\Http\Requests\EstabelecimentoUpdateRequest;
+use App\Service\EstabelecimentoService;
 use Exception;
+use Illuminate\Http\Request;
 
-class CategoriaController extends Controller
+class EstabelecimentoController extends Controller
 {
-    protected $categoria;
-    public function __construct(CategoriaService $categoriaService)
+    protected $estabelecimento;
+    public function __construct(EstabelecimentoService $estabelecimentoService)
     {
-        $this->categoria = $categoriaService;
+        $this->estabelecimento = $estabelecimentoService;
     }
-    public function listaCategorias()
+    public function listaEstabelecimento()
     {
         try{
             $response = [
                 'status' => 200,
-                'categoria' => $this->categoria->listarCategorias()
+                'estabelecimento' => $this->estabelecimento->listarEstabelecimento()
             ];
         }catch(Exception $error){
             $response = [
@@ -31,12 +32,12 @@ class CategoriaController extends Controller
         return response()->json($response, $response['status']);
     }
 
-    public function buscaPorId(CategoriaIdRequest $request)
+    public function buscaPorId(EstabelecimentoIdRequest $request)
     {
         try{
             $response = [
                 'status' => 200,
-                'categoria' => $this->categoria->buscarCategoriaPorId($request)
+                'estabelecimento' => $this->estabelecimento->buscarEstabelecimentoPorId($request)
             ];
         }catch(Exception $error){
             $response = [
@@ -48,45 +49,45 @@ class CategoriaController extends Controller
         return response()->json($response, $response['status']);
     }
 
-    public function salvaCategoria(CategoriaRequest $request)
+    public function salvaEstabelecimento(EstabelecimentoRequest $request)
     {
         try{
             $response = [
                 'status' => 201,
-                'id' => $this->categoria->salvarCategoria($request)
+                'id' => $this->estabelecimento->salvarEstabelecimento($request)
             ];
         }catch(Exception $error){
             $response = [
-                'status' => 422,
-                'error' => 'Não foi possível salvar!'
+                'status' => 500,
+                'error' => $error
             ];
         }
 
         return response()->json($response, $response['status']);
     }
 
-    public function atualizaCategoria(CategoriaUpdateRequest $request)
+    public function atualizaEstabelecimento(EstabelecimentoUpdateRequest $request)
     {
         try{
             $response = [
                 'status' => 200,
-                'categoria' => $this->categoria->atualizarCategoria($request)
+                'estabelecimento' => $this->estabelecimento->atualizarEstabelecimento($request)
             ];
         }catch(Exception $error){
             $response = [
                 'status' => 422,
-                'error' => 'Não foi possível atualizar!'
+                'error' => 'Estabelecimento não encontrado!'
             ];
         }
 
         return response()->json($response, $response['status']);
     }
 
-    public function excluiCategoria(CategoriaIdRequest $request)
+    public function excluiEstabelecimento(EstabelecimentoIdRequest $request)
     {
         $response = ['status' => 204];
         try{
-            $this->categoria->deletarCategoria($request);
+            $this->estabelecimento->deletarEstabelecimento($request);
         }catch(Exception $error){
             $response = [
                 'status' => 410,
@@ -95,5 +96,4 @@ class CategoriaController extends Controller
         }
         return response('', $response['status']);
     }
-
 }
