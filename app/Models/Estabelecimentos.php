@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Estabelecimento extends Model
+class Estabelecimentos extends Model
 {
     use HasFactory;
+    protected $table = 'estabelecimentos';
+    protected $primaryKey = 'id_estabelecimento';
+
     protected $fillable = [
         'razao_social',
         'nome_fantasia',
@@ -20,11 +23,12 @@ class Estabelecimento extends Model
         'data_cadastro',
         'status',
         'agencia',
-        'conta'
+        'conta',
+        'categoria_id'
     ];
     public $timestamps = false;
-    public function categoria(){
-        return $this->hasOne(Categoria::class);
+    public function categorias(){
+        return $this->hasOne(Categorias::class);
     }
 
 }
