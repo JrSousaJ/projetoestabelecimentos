@@ -21,7 +21,6 @@ class EstabelecimentoRequest extends FormRequest
         return [
             'razao_social' => 'required|unique:estabelecimentos,razao_social',
             'cnpj' => 'required|unique:estabelecimentos,cnpj|regex:#^\d{2}.?\d{3}.?\d{3}/?\d{4}-?\d{2}#',
-            'email' => 'email',
             'data_cadastro' => 'date',
             'categoria_id' => 'required|exists:categorias,id',
         ];
@@ -33,7 +32,6 @@ class EstabelecimentoRequest extends FormRequest
             'razao_social.unique' => 'Razão social já cadastrada',
             'cnpj.required' => 'CNPJ necessário',
             'cnpj.unique' => 'CNPJ já cadastrado',
-            'email.email' => 'Email em formato inválido',
             'data_cadastro.date' => 'Data inválida',
             'categoria_id.required' => 'Categoria necessária',
         ];

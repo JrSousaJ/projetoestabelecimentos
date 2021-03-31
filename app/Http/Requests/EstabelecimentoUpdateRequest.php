@@ -26,8 +26,6 @@ class EstabelecimentoUpdateRequest extends FormRequest
         return [
             'razao_social' => 'required',
             'cnpj' => 'required|regex:#^\d{2}.?\d{3}.?\d{3}/?\d{4}-?\d{2}#',
-            'email' => 'email',
-            'data_cadastro' => 'date',
             'categoria_id' => 'required|exists:categorias,id',
         ];
     }

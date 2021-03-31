@@ -59,6 +59,7 @@ class EstabelecimentoRepository
         $estabelecimento->data_cadastro = $request->data_cadastro;
         $estabelecimento->status = $request->status;
         $estabelecimento->agencia = $request->agencia;
+        $estabelecimento->categoria_id = $request->categoria_id;
         $estabelecimento->conta = $request->conta;
 
         $estabelecimento->save();
