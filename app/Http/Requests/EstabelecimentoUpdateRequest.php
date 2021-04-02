@@ -24,8 +24,8 @@ class EstabelecimentoUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'razao_social' => 'required',
-            'cnpj' => 'required|regex:#^\d{2}.?\d{3}.?\d{3}/?\d{4}-?\d{2}#',
+            'razao_social' => 'required|unique:estabelecimentos,razao_social',
+            'cnpj' => 'required|unique:estabelecimentos,cnpj|regex:#^\d{2}.?\d{3}.?\d{3}/?\d{4}-?\d{2}#',
             'categoria_id' => 'required|exists:categorias,id',
         ];
     }
