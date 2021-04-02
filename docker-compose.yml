@@ -12,6 +12,19 @@ services:
       restart: always
       depends_on:
         - db
+        - db_test
+  db_test:
+    container_name: mysql_test_docker
+    image: mysql:5.7
+    volumes:
+      - ./mysql_test:/var/lib/mysql
+    environment:
+      MYSQL_USER: admin
+      MYSQL_DATABASE: fitcard
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "8565:3306"
   db:
     container_name: mysql_docker
     image: mysql:5.7
