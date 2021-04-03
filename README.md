@@ -32,7 +32,7 @@ Quando houver necessidade de executar depois de ter instalado a API, o sistema p
 ```
 ## API
 
-Para utilização da API, importar o arquivo Insomnia_2021-04-03.json para disparar as requisições.
+Para utilização da API, importar o arquivo **Insomnia_2021-04-03.json** para disparar as requisições.
 
 ## Banco de Dados
 
