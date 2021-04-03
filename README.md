@@ -30,6 +30,9 @@ Quando houver necessidade de executar depois de ter instalado a API, o sistema p
     docker-compose up -d && docker exec -it container_jairo service apache2 start 
 
 ```
+## API
+
+Para utilização da API, importar o arquivo Insomnia_2021-04-03.json para disparar as requisições.
 
 ## Banco de Dados
 
