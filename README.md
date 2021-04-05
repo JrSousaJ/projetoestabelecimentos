@@ -35,8 +35,7 @@ Quando houver necessidade de executar depois de ter instalado a API, o sistema p
 Para utilização da API, importar o arquivo **Insomnia_2021-04-03.json** para disparar as requisições.
 
 ## Banco de Dados
-
-Para a criação das tabelas, ao estar na pasta **html**, utilizar o comando:
+Já existe uma base de dados no projeto, porém, caso queira criar outro banco de dados, rode o seguinte comando dentro da pasta **html** do container:
 
     php artisan migrate
   
